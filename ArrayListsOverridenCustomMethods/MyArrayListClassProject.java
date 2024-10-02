@@ -15,7 +15,7 @@ public class MyArrayListClassProject<E> {
 
     // Add an element at the end of the list
     public void add(E element) {
-        // ... implementation to be added ...
+
     }
 
     // Insert an element at a specific index

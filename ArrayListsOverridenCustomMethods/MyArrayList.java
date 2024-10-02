@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 public class MyArrayList<E> {
     private E[] data;
-    private int size; //
-    private int capacity;
+    private int size; // Keeps track of the number of elements in the arrayList, also the index of the
+                      // next available slot. Allows knowledge of how many elements are in the
+                      // arrayList, as well as ensures essential functions such as add() and remove()
+                      // work properly. Retrieval, iteration and checking if the list is empty are all
+                      // dependent on this variable.
+    private int capacity; // Determines the physical size of the array. The physical size of the array
+                          // is always >= the number of elements in the arrayList.
 
     @SuppressWarnings("unchecked")
     public MyArrayList() {
