@@ -1,10 +1,10 @@
 package ArrayListsOverridenCustomMethods;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MyArrayList<E> {
     private E[] data;
-    private int size;
+    private int size; //
     private int capacity;
 
     @SuppressWarnings("unchecked")
@@ -14,9 +14,16 @@ public class MyArrayList<E> {
         size = 0;
     }
 
+    /*
+     * Pseudocode:
+     * If size of the arrayList is zero or size is greater than or equal to capacity
+     * Call ensureCapacity()
+     * After that check, add the element at the size index i.e add the element at
+     * the last of the arrayList. This is add element to data[size]
+     * Increment the size of the array.
+     */
+
     public void add(E element) {
-        // Pseudocode:
-        // If size
 
     }
 

@@ -7,7 +7,7 @@ public class MyArrayListClassProject<E> {
     private int size;
     private int capacity;
 
-    public MyArrayList() {
+    public MyArrayListClassProject() {
         capacity = 10; // Initial capacity
         data = (E[]) new Object[capacity];
         size = 0;
@@ -54,10 +54,12 @@ public class MyArrayListClassProject<E> {
     }
 
     // Check if the list is empty
-public boolean isEmpty() {
-// ... implementation to be added ...
-}
+    public boolean isEmpty() {
+        // ... implementation to be added ...
+    }
 
-// Clear the list
-public void clear() {
-// ... implementation to be added ...
+    // Clear the list
+    public void clear() {
+        // ... implementation to be added ...
+    }
+}
