@@ -1,3 +1,5 @@
+
+```java
 /* import java.util.ArrayList;
 
 /**
@@ -54,36 +56,5 @@ public static void main(String[] args) {
     System.out.println(list.get(0));
     list.remove("Hello");
 }
-/*
- * <!--###Notes-**Class Declaration**:`CustomArrayList`extends`ArrayList`
- * to inherit
- * its properties
- * and methods.-**Override`add`Method**:
- * Adds an
- * element to
- * the list
- * and prints
- * a message.-**Override`remove`Method**:
- * Removes an
- * element from
- * the list
- * and prints
- * a message.-**Override`get`Method**:
- * Retrieves an
- * element at
- * a specific
- * index and
- * prints a message.-**Main Method**:
- * Demonstrates the
- * usage of
- * the overridden
- * methods in`CustomArrayList`.
- * 
- * This code
- * provides a
- * basic structure for
- * extending and
- * customizing an`ArrayList`
- * in Java.--
- * >
- */
+```
+

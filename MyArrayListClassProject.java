@@ -1,28 +1,24 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 
-public class MyArrayList<E> {
+public class MyArrayListClassProject<E> {
     private E[] data;
     private int size;
     private int capacity;
 
-    @SuppressWarnings("unchecked")
     public MyArrayList() {
         capacity = 10; // Initial capacity
         data = (E[]) new Object[capacity];
         size = 0;
     }
 
+    // Add an element at the end of the list
     public void add(E element) {
         // ... implementation to be added ...
-
     }
 
     // Insert an element at a specific index
     public void add(int index, E element) {
         // ... implementation to be added ...
-        // If size is at == 0 or is >= capacity, resize capacity.
-        // Add the element at the specified index
-        // Increment size
     }
 
     // Get the element at the specified index
@@ -42,12 +38,7 @@ public class MyArrayList<E> {
 
     // Check if the list contains a specific element
     public boolean contains(E element) {
-        for (int i = 0; i < size; i++) {
-            if (data[i] == element) {
-                return true;
-            }
-        }
-        return false;
+        // ... implementation to be added ...
     }
 
     // Find the index of the first occurrence of an element
@@ -61,17 +52,10 @@ public class MyArrayList<E> {
     }
 
     // Check if the list is empty
-    public boolean isEmpty() {
-        // ... implementation to be added ...
-    }
-
-    // Clear the list
-    public void clear() {
-        // ... implementation to be added ...
-    }
-
-    // Increase the capacity of the array if needed
-    private void ensureCapacity() {
-        // ... implementation to be added ...
-    }
+public boolean isEmpty() {
+// ... implementation to be added ...
 }
+
+// Clear the list
+public void clear() {
+// ... implementation to be added ...
