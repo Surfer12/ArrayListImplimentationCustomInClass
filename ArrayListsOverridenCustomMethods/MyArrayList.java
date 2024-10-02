@@ -15,7 +15,8 @@ public class MyArrayList<E> {
     }
 
     public void add(E element) {
-        // ... implementation to be added ...
+        // Pseudocode:
+        // If size
 
     }
 
