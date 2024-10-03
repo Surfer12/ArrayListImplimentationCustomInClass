@@ -2,7 +2,7 @@
 
 Pseudocode:
 ```
-If size equals capacity:pseudocode and implementations
+If size equals capacity:
     Ensure capacity (resize if necessary)
 Add element to data[size]
 Increment size

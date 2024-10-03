@@ -1,6 +1,13 @@
 package ArrayListsOverridenCustomMethods;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import java.util.IndexOutOfBoundsException;
+import java.util.NoSuchElementException;
 
 public class MyArrayList<E> {
     private E[] data;
@@ -32,20 +39,43 @@ public class MyArrayList<E> {
         if (size < 0 || size >= capacity) {
             ensureCapacity();
         }
-        data[size++] = element
+        data[size++] = element;
     }
 
+    // ... implementation to be added ...
+    // If size is at == 0 or is >= capacity, resize capacity.
+    // Reindex the arrayList and shift elements to the right to make space for the
+    // new element.
+    // Add the element at the specified index
+    // Increment size
     // Insert an element at a specific index
     public void add(int index, E element) {
-        // ... implementation to be added ...
-        // If size is at == 0 or is >= capacity, resize capacity.
-        // Add the element at the specified index
-        // Increment size
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(
+                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
+                            + "The capacity of the array is: " + capacity);
+        }
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        if (size >= capacity) {
+            ensureCapacity();
+        }
+        for (int i = size - 1; i >= index; i--) {
+            data[i + 1] = data[i];
+        }
+        data[index] = element;
+        size++;
     }
 
     // Get the element at the specified index
     public E get(int index) {
-        // ... implementation to be added ...
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(
+                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
+                            + "The capacity of the array is: " + capacity);
+        }
+        return data[index];
     }
 
     // Set the element at the specified index and return the old element
@@ -60,21 +90,42 @@ public class MyArrayList<E> {
 
     // Check if the list contains a specific element
     public boolean contains(E element) {
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        for (int i = 0; i < size; i++) {
+            if (element.equals(data[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     // ... implementation to be added ...
     // Find the index of the first occurrence of an element
     public int indexOf(E element) {
-        // ... implementation to be added ...
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        for (int i = 0; i < size; i++) {
+            if (element.equals(data[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // Get the current size of the list
     public int size() {
-        // ... implementation to be added ...
+        return size;
     }
 
     // Check if the list is empty
     public boolean isEmpty() {
-        // ... implementation to be added ...
+        if (size == 0) {
+            return true;
+        }
+        return false;
     }
 
     // Clear the list
@@ -92,6 +143,11 @@ public class MyArrayList<E> {
     private void ensureCapacity() {
         if (size >= capacity) {
             capacity *= 2;
+            E[] newData = (E[]) new Object[capacity];
+            for (int i = 0; i < size; i++) {
+                newData[i] = data[i];
+            }
+            data = newData;
         }
     }
 }
