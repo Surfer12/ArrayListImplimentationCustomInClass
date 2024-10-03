@@ -4,7 +4,7 @@ Upload arraylist with implimentation of the given functions
     Specifically analyze the clear function.
 
 Explore the implementation of queue and stack data structures using arrays in Java.
-Stack and queue implimentation using an array. 
+Stack and queue implimentation using an array.  
 
 Queue Implementation:
 ```java
