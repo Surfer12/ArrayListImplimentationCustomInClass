@@ -80,12 +80,30 @@ public class MyArrayList<E> {
 
     // Set the element at the specified index and return the old element
     public E set(int index, E element) {
-        // ... implementation to be added ...
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(
+                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
+                            + ". The capacity of the array is: " + capacity);
+        }
+        E oldElement = data[index];
+        data[index] = element;
+        return oldElement;
     }
 
     // Remove the element at the specified index
     public E remove(int index) {
-        // ... implementation to be added ...
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        E removedElement = data[index];
+        int numMoved = size - index - 1;
+        if (numMoved > 0) {
+            for (int i = index + 1; i < size; i++) {
+                data[i - 1] = data[i]; // Shift elements left
+            }
+        }
+        data[--size] = null; // Clear to let GC do its work
+        return removedElement;
     }
 
     // Check if the list contains a specific element
@@ -101,7 +119,6 @@ public class MyArrayList<E> {
         return false;
     }
 
-    // ... implementation to be added ...
     // Find the index of the first occurrence of an element
     public int indexOf(E element) {
         if (element == null) {
@@ -130,8 +147,10 @@ public class MyArrayList<E> {
 
     // Clear the list
     public void clear() {
-        // ... implementation to be added ...
-
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
+        }
+        size = 0;
     }
 
     // If size equals capacity:
@@ -140,6 +159,7 @@ public class MyArrayList<E> {
     // copy the elements from the old array to the new array
     // set data to the new array
     // update capacity to the new capacity
+    @SuppressWarnings("unchecked")
     private void ensureCapacity() {
         if (size >= capacity) {
             capacity *= 2;

@@ -9,3 +9,26 @@ Copying the array from the size backwards rather than forwards is essential for 
 4. **Efficiency**: This method of shifting elements is efficient because it only requires a single pass through the elements that need to be moved, ensuring that the operation remains linear in time complexity, O(n), where n is the number of elements in the list.
 
 In summary, copying from the size backwards ensures that existing elements are preserved and correctly shifted to accommodate the new element without any data loss.
+
+The `remove` method you provided has a small issue in the loop that shifts elements after removing an element. The loop should iterate from `index + 1` to `size`, not from `size - 1` to `index`. Here's the corrected version:
+
+```java:ArrayListsOverridenCustomMethods/MyArrayList.java
+    // Remove the element at the specified index
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        E removedElement = data[index];
+        int numMoved = size - index - 1;
+        if (numMoved > 0) {
+            for (int i = index + 1; i < size; i++) { // Corrected loop
+                data[i - 1] = data[i]; // Shift elements left
+            }
+        }
+        data[--size] = null; // Clear to let GC do its work
+        return removedElement;
+    }
+```
+
+### Explanation of Changes:
+- The loop now starts from `index + 1` and goes to `size`, shifting elements left to fill the gap left by the removed element.
