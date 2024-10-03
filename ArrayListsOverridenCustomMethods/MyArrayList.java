@@ -83,8 +83,15 @@ public class MyArrayList<E> {
 
     }
 
-    // If size equals capacity: new capacity = old capacity
+    // If size equals capacity:
+    // New capacity is updated to capacity *= 2
+    // create a new array with the new capacity
+    // copy the elements from the old array to the new array
+    // set data to the new array
+    // update capacity to the new capacity
     private void ensureCapacity() {
-        if (size 
+        if (size >= capacity) {
+            capacity *= 2;
+        }
     }
 }
