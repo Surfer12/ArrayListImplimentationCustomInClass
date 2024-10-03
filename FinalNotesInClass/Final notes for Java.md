@@ -31,3 +31,18 @@ Review all modules and know the content of each section.
 They have been updated.
 Review the downloaded files and conduct self assessment using MPC and short and long answer questions as well as code based questions.
 
+Number systems: Review document itself. 
+
+REvisit all questions from previous quizes and midterms as well as the presentations. 
+
+Quick sort and heap sort. Know flowcharts for all sorting algorithms. Specifically selection sort, bubble sort, and insertion sort. 
+
+Know resizing of an array. 
+
+Printing and contains within a linked list. 
+Review node, head, tail syntax. 
+Adding, removing, checking contains. 
+
+No curved lines connecting flowchart sections.
+Be sure to show the exact control flow of the program. Do not assume anything. 
+
