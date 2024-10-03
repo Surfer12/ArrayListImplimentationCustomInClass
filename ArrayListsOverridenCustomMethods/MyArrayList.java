@@ -29,7 +29,10 @@ public class MyArrayList<E> {
      */
 
     public void add(E element) {
-
+        if (size < 0 || size >= capacity) {
+            ensureCapacity();
+        }
+        data[size++] = element
     }
 
     // Insert an element at a specific index
@@ -57,14 +60,8 @@ public class MyArrayList<E> {
 
     // Check if the list contains a specific element
     public boolean contains(E element) {
-        for (int i = 0; i < size; i++) {
-            if (data[i] == element) {
-                return true;
-            }
-        }
-        return false;
-    }
 
+    // ... implementation to be added ...
     // Find the index of the first occurrence of an element
     public int indexOf(E element) {
         // ... implementation to be added ...
@@ -83,10 +80,11 @@ public class MyArrayList<E> {
     // Clear the list
     public void clear() {
         // ... implementation to be added ...
+
     }
 
-    // Increase the capacity of the array if needed
+    // If size equals capacity: new capacity = old capacity
     private void ensureCapacity() {
-        // ... implementation to be added ...
+        if (size 
     }
 }

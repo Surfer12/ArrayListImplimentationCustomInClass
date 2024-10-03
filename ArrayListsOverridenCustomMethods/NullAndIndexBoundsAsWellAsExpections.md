@@ -1,4 +1,4 @@
-Here’s a breakdown of the null and index bounds checking implemented in your methods, along with the relevant exception handling:
+# Null and Index Bounds Checking, and Exception Handling in Custom ArrayList Implementation Explained
 
 ### Null Checking
 - **`indexOf(E element)`**:
