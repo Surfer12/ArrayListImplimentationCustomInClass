@@ -1,14 +1,5 @@
 package ArrayListsOverridenCustomMethods;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import java.util.stream.Collectors;
-import java.util.IndexOutOfBoundsException;
-import java.util.NoSuchElementException;
-
 public class MyArrayList<E> {
     private E[] data;
     private int size; // Keeps track of the number of elements in the arrayList, also the index of the
@@ -27,28 +18,23 @@ public class MyArrayList<E> {
     }
 
     /*
-     * Pseudocode:
-     * If size of the arrayList is zero or size is greater than or equal to capacity
-     * Call ensureCapacity()
-     * After that check, add the element at the size index i.e add the element at
-     * the last of the arrayList. This is add element to data[size]
-     * Increment the size of the array.
+     * Pseudocode: for add(E element):
+     * check if size is less than 0 or size is greater than or equal to capacity, if
+     * so throw an unsupported operation exception.
+     * ensureCapacity()
+     * add element to data[] at index of field size i.e data[size]
+     * increment size
+     * 
      */
 
     public void add(E element) {
         if (size < 0 || size >= capacity) {
-            ensureCapacity();
+            throw new UnsupportedOperationException("Unsupported operation");
         }
+        ensureCapacity();
         data[size++] = element;
     }
 
-    // ... implementation to be added ...
-    // If size is at == 0 or is >= capacity, resize capacity.
-    // Reindex the arrayList and shift elements to the right to make space for the
-    // new element.
-    // Add the element at the specified index
-    // Increment size
-    // Insert an element at a specific index
     public void add(int index, E element) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(
