@@ -9,7 +9,6 @@ Increment size
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public void add(E element) {
     ensureCapacity();
     data[size++] = element;
@@ -29,7 +28,6 @@ Increment size
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public void add(int index, E element) {
     if (index < 0 || index > size) {
         throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -51,7 +49,6 @@ Return element at index
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public E get(int index) {
     if (index < 0 || index >= size) {
         throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -72,7 +69,6 @@ Return old element
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public E set(int index, E element) {
     if (index < 0 || index >= size) {
         throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -97,7 +93,6 @@ Return removed element
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public E remove(int index) {
     if (index < 0 || index >= size) {
         throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -123,7 +118,6 @@ Return false
 ```
 
 Improved Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public boolean contains(E element) {
     return indexOf(element) >= 0;
 }
@@ -140,7 +134,6 @@ Return -1 if not found
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public int indexOf(E element) {
     if (element == null) {
         for (int i = 0; i < size; i++) {
@@ -167,7 +160,6 @@ Return size
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public int size() {
     return size;
 }
@@ -181,7 +173,6 @@ Return true if size is 0, false otherwise
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public boolean isEmpty() {
     return size == 0;
 }
@@ -197,7 +188,6 @@ Set size to 0
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 public void clear() {
     for (int i = 0; i < size; i++) {
         data[i] = null;
@@ -219,7 +209,6 @@ If size equals capacity:
 ```
 
 Implementation:
-```java:ArrayListsOverridenCustomMethods/MyArrayList.java
 private void ensureCapacity() {
     if (size == capacity) {
         int newCapacity = capacity * 3 / 2 + 1;
