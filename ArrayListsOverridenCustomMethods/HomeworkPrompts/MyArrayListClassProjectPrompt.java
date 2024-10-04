@@ -13,7 +13,7 @@ import java.util.Arrays;
  * 
  * @param <E> The type of elements in this list.
  */
-public class MyArrayListClassProject<E> {
+public class MyArrayListClassProjectPrompt<E> {
     private E[] data; // The array that stores the elements of the list.
     private int size; // The current number of elements in the list.
     private int capacity; // The maximum number of elements the list can hold.
@@ -21,7 +21,7 @@ public class MyArrayListClassProject<E> {
     /**
      * Constructs an empty list with an initial capacity of 10.
      */
-    public MyArrayListClassProject() {
+    public MyArrayListClassProjectPrompt() {
         capacity = 10; // Initial capacity
         data = (E[]) new Object[capacity];
         size = 0;

@@ -38,15 +38,8 @@ public class MyArrayList<E> {
      * add element to data[] at index of field size i.e data[size]
      * increment size
      * 
-     * for add(int index, E element):
-     * check if index is out of bounds, if so throw an exception
-     * check if element is null, if so throw an exception
-     * check if size is == capacity, if so call ensureCapacity()
-     * add the element to the array at the index of size, then increment size
      * 
-     * for get(int index):
-     * check if index is out of bounds, if so throw an exception
-     * return the element at the specified index
+     * 
      */
 
     /**
@@ -67,6 +60,17 @@ public class MyArrayList<E> {
      * @param index   the index at which the specified element is to be inserted
      * @param element the element to be inserted
      * @throws IndexOutOfBoundsException if the index is out of range
+     * 
+     *                                   for add(int index, E element):
+     *                                   check if index is out of bounds, if so
+     *                                   throw an exception
+     *                                   check if element is null, if so throw an
+     *                                   exception
+     *                                   check if size is == capacity, if so call
+     *                                   ensureCapacity()
+     *                                   add the element to the array at the index
+     *                                   of size, then increment size
+     * 
      */
     public void add(int index, E element) {
         checkIndex(index);
@@ -81,21 +85,38 @@ public class MyArrayList<E> {
         size++;
     }
 
-    // Get the element at the specified index
-    // Check if index is out of bounds, if so throw an exception
-    // Return the element at the specified index
+    /**
+     * Returns the element at the specified index in this list.
+     * 
+     * for get(int index):
+     * check if index is out of bounds, if so throw an exception
+     * return the element at the specified index
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *
+     * @param index the index of the element to retrieve
+     * @return the element at the specified index
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     public E get(int index) {
         checkIndex(index);
         return data[index];
     }
 
-    // Set the element at the specified index and return the old element
-    // Check if index is out of bounds, if so throw an exception
-    // Check if element is null, if so throw an exception
-    // Set the element at the specified index and return the old element
     /**
      * Replaces the element at the specified index with the specified element.
      *
+     * for set(int index, E element):
+     * check if index is out of bounds, if so throw an exception
+     * check if element is null, if so throw an exception
+     * set the element at the specified index to the new element
+     * return the old element
+     * 
      * @param index   the index of the element to be replaced
      * @param element the element to be stored at the specified index
      * @return the element previously at the specified position
@@ -109,12 +130,12 @@ public class MyArrayList<E> {
         return oldElement; // return the old element
     }
 
-    // Remove the element at the specified index
-    // Check if index is out of bounds, if so throw an exception
-    // Return the element at the specified index
     /**
      * Removes the element at the specified index from this list.
-     *
+     * // Remove the element at the specified index
+     * // Check if index is out of bounds, if so throw an exception
+     * // Return the element at the specified index
+     * 
      * @param index the index of the element to be removed
      * @return the element that was removed from the list
      * @throws IndexOutOfBoundsException if the index is out of range (index < 0 ||
@@ -133,11 +154,12 @@ public class MyArrayList<E> {
         return removedElement;
     }
 
-    // Check if element is null, if so throw an exception
-    // Check if the list contains a specific element
     /**
      * Returns true if this list contains the specified element.
-     *
+     * // Check if element is null, if so throw an exception
+     * // Check if the list contains a specific element
+     * 
+     * 
      * @param element the element to be checked for containment in this list
      * @return true if this list contains the specified element, false otherwise
      */
@@ -151,15 +173,16 @@ public class MyArrayList<E> {
         return false;
     }
 
-    // Find the index of the first occurrence of an element
-    // Check if element is null, if so throw an exception
-    // Loop through the array and return the index of the first occurrence of the
-    // element
     /**
      * Returns the index of the first occurrence of the specified element in this
      * list,
      * or -1 if this list does not contain the element.
      *
+     * // Find the index of the first occurrence of an element
+     * // Check if element is null, if so throw an exception
+     * // Loop through the array and return the index of the first occurrence of the
+     * // element
+     * 
      * @param element the element to search for
      * @return the index of the first occurrence of the specified element in this
      *         list,
@@ -217,17 +240,17 @@ public class MyArrayList<E> {
         size = 0;
     }
 
-    // If size equals capacity:
-    // New capacity is updated to capacity *= 2
-    // create a new array with the new capacity
-    // copy the elements from the old array to the new array
-    // set data to the new array
-    // update capacity to the new capacity
     /**
      * Ensures that the underlying array has enough capacity to accommodate
      * additional elements.
      * If the current size of the array is equal to its capacity, the capacity is
      * doubled and the elements are copied to the new array.
+     * // If size equals capacity:
+     * // New capacity is updated to capacity *= 2
+     * // create a new array with the new capacity
+     * // copy the elements from the old array to the new array
+     * // set data to the new array
+     * // update capacity to the new capacity
      */
     @SuppressWarnings("unchecked")
     private void ensureCapacity() {
