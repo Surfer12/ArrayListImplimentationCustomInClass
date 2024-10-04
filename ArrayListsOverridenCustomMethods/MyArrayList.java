@@ -40,14 +40,8 @@ public class MyArrayList<E> {
     // Check if size is == capacity, if so call ensureCapacity()
     // add the element to the array at the index of size, then increment size
     public void add(int index, E element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(
-                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
-                            + "The capacity of the array is: " + capacity);
-        }
-        if (element == null) {
-            throw new NullPointerException("Element is null");
-        }
+        checkIndex(index);
+        checkElement(element);
         if (size == capacity) {
             ensureCapacity();
         }
@@ -59,32 +53,30 @@ public class MyArrayList<E> {
     }
 
     // Get the element at the specified index
+    // Check if index is out of bounds, if so throw an exception
+    // Return the element at the specified index
     public E get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(
-                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
-                            + "The capacity of the array is: " + capacity);
-        }
+        checkIndex(index);
         return data[index];
     }
 
     // Set the element at the specified index and return the old element
+    // Check if index is out of bounds, if so throw an exception
+    // Check if element is null, if so throw an exception
+    // Set the element at the specified index and return the old element
     public E set(int index, E element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(
-                    "Element requested is out of bounds at index: " + index + ". The size of the array is: " + size
-                            + ". The capacity of the array is: " + capacity);
-        }
-        E oldElement = data[index];
-        data[index] = element;
-        return oldElement;
+        checkIndex(index);
+        checkElement(element);
+        E oldElement = data[index]; // use temp swap variable to store the old element
+        data[index] = element; // set the element at the specified index to the new element
+        return oldElement; // return the old element
     }
 
     // Remove the element at the specified index
+    // Check if index is out of bounds, if so throw an exception
+    // Return the element at the specified index
     public E remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        checkIndex(index);
         E removedElement = data[index];
         int numMoved = size - index - 1;
         if (numMoved > 0) {
@@ -96,11 +88,10 @@ public class MyArrayList<E> {
         return removedElement;
     }
 
+    // Check if element is null, if so throw an exception
     // Check if the list contains a specific element
     public boolean contains(E element) {
-        if (element == null) {
-            throw new NullPointerException("Element is null");
-        }
+        checkElement(element);
         for (int i = 0; i < size; i++) {
             if (element.equals(data[i])) {
                 return true;
@@ -110,10 +101,11 @@ public class MyArrayList<E> {
     }
 
     // Find the index of the first occurrence of an element
+    // Check if element is null, if so throw an exception
+    // Loop through the array and return the index of the first occurrence of the
+    // element
     public int indexOf(E element) {
-        if (element == null) {
-            throw new NullPointerException("Element is null");
-        }
+        checkElement(element);
         for (int i = 0; i < size; i++) {
             if (element.equals(data[i])) {
                 return i;
@@ -129,10 +121,7 @@ public class MyArrayList<E> {
 
     // Check if the list is empty
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     // Clear the list
@@ -157,6 +146,18 @@ public class MyArrayList<E> {
             newData = Arrays.copyOf(data, newCapacity);
             data = newData;
             capacity = newCapacity;
+        }
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
+    private void checkElement(E element) {
+        if (element == null) {
+            throw new NullPointerException("Element is null");
         }
     }
 }
