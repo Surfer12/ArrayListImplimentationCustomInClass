@@ -201,7 +201,7 @@ public void clear() {
 Pseudocode:
 ```
 If size equals capacity:
-    New capacity = old capacity * 1.5 + 1
+    New capacity = old capacity * 2
     Create new array with new capacity
     Copy elements from old array to new array
     Set data to new array
@@ -211,7 +211,7 @@ If size equals capacity:
 Implementation:
 private void ensureCapacity() {
     if (size == capacity) {
-        int newCapacity = capacity * 3 / 2 + 1;
+        int newCapacity = capacity * 2;
         data = Arrays.copyOf(data, newCapacity);
         capacity = newCapacity;
     }

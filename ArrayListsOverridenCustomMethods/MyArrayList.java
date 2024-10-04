@@ -1,5 +1,7 @@
 package ArrayListsOverridenCustomMethods;
 
+import java.util.Arrays;
+
 public class MyArrayList<E> {
     private E[] data;
     private int size; // Keeps track of the number of elements in the arrayList, also the index of the
@@ -19,22 +21,24 @@ public class MyArrayList<E> {
 
     /*
      * Pseudocode: for add(E element):
-     * check if size is less than 0 or size is greater than or equal to capacity, if
-     * so throw an unsupported operation exception.
-     * ensureCapacity()
+     * check if array needs resizing, which would be if size = capacity;
+     * if so, call ensureCapacity()
      * add element to data[] at index of field size i.e data[size]
      * increment size
      * 
      */
 
     public void add(E element) {
-        if (size < 0 || size >= capacity) {
-            throw new UnsupportedOperationException("Unsupported operation");
+        if (size == capacity) {
+            ensureCapacity();
         }
-        ensureCapacity();
-        data[size++] = element;
+        data[size++] = element; // add the element to the array at the index of size, then increment size
     }
 
+    // Check if index is out of bounds, if so throw an exception
+    // Check if element is null, if so throw an exception
+    // Check if size is == capacity, if so call ensureCapacity()
+    // add the element to the array at the index of size, then increment size
     public void add(int index, E element) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(
@@ -44,12 +48,12 @@ public class MyArrayList<E> {
         if (element == null) {
             throw new NullPointerException("Element is null");
         }
-        if (size >= capacity) {
+        if (size == capacity) {
             ensureCapacity();
         }
-        for (int i = size - 1; i >= index; i--) {
-            data[i + 1] = data[i];
-        }
+        System.arraycopy(data, index, data, index + 1, size - index); // void, source array, start index of source,
+                                                                      // destination array, start index of destination,
+                                                                      // length of copy (size - index)
         data[index] = element;
         size++;
     }
@@ -147,13 +151,12 @@ public class MyArrayList<E> {
     // update capacity to the new capacity
     @SuppressWarnings("unchecked")
     private void ensureCapacity() {
-        if (size >= capacity) {
-            capacity *= 2;
-            E[] newData = (E[]) new Object[capacity];
-            for (int i = 0; i < size; i++) {
-                newData[i] = data[i];
-            }
+        if (size == capacity) {
+            int newCapacity = capacity * 2;
+            E[] newData = (E[]) new Object[newCapacity];
+            newData = Arrays.copyOf(data, newCapacity);
             data = newData;
+            capacity = newCapacity;
         }
     }
 }
